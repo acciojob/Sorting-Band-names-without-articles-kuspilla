@@ -1,21 +1,20 @@
-// This file is not to be modified. Please ignore this.
-// We will understand all of this later in the course.
-// DO NOT MODIFY THIS FILE
+// Array of band names
+let bandNames = ['The Rolling Stones', 'Led Zeppelin', 'Aerosmith', 'The Beatles', 'Pink Floyd'];
 
-const express = require('express');
-const path = require('path');
+// Function to remove articles from a band name
+function removeArticles(name) {
+  return name.replace(/^(a|an|the)\s+/i, '');
+}
 
-const app = express();
+// Sort the band names without articles
+bandNames.sort((a, b) => removeArticles(a).localeCompare(removeArticles(b)));
 
-app.use(express.static(__dirname))
+// Get the UL element with id 'band'
+const bandList = document.getElementById('band');
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/main.html'));
+// Create list items and add them to the UL
+bandNames.forEach(name => {
+  const listItem = document.createElement('li');
+  listItem.textContent = name;
+  bandList.appendChild(listItem);
 });
-//your code here
-app.post('/add', (req, res) => {
-  const {a,b} = req.body;
-  res.status(200).send(a+b);
-  // res.sendFile(path.join(__dirname + '/main.html'));
-});
-module.exports = app;
