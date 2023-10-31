@@ -2,6 +2,6 @@
 let arr = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
 arr.sort();
-let ans=[];
+let ans=arr.sort();
 
 console.log(ans);
